@@ -1,13 +1,26 @@
 import { useState } from 'react'
-import { BookOpen, Menu, X } from 'lucide-react'
+import {
+  ArrowUpRight,
+  BookOpen,
+  BookOpenCheck,
+  ExternalLink,
+  Menu,
+  Scale,
+  ShieldCheck,
+  X,
+} from 'lucide-react'
 import { NavLink, Outlet } from 'react-router-dom'
+import { legalResources } from '../../data/legalResources.js'
+import LogoMark from './LogoMark.jsx'
 
 const links = [
   { to: '/', label: 'Accueil' },
   { to: '/assistant', label: 'Assistant IA' },
   { to: '/base-juridique', label: 'Base juridique' },
   { to: '/ressources', label: 'Ressources' },
+  { to: '/connexion', label: 'Connexion' },
 ]
+const currentYear = new Date().getFullYear()
 
 export default function Layout() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -31,16 +44,7 @@ export default function Layout() {
             className="flex shrink-0 items-center gap-2 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-info"
             onClick={() => setMenuOpen(false)}
           >
-            <span className="grid size-10 shrink-0 place-items-center overflow-hidden rounded-xl bg-white">
-              <img
-                src="/logo-icon.png"
-                alt=""
-                aria-hidden="true"
-                width="160"
-                height="160"
-                className="size-10 object-contain"
-              />
-            </span>
+            <LogoMark />
             <span className="flex h-8 items-center rounded-md bg-white px-2">
               <img
                 src="/logo-text.png"
@@ -94,12 +98,130 @@ export default function Layout() {
       </main>
 
       <footer className="border-t border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <p className="flex items-center gap-2">
-            <BookOpen size={16} aria-hidden="true" />
-            Droit haïtien, sources consultables et analyse prudente.
-          </p>
-          <p>Prototype d’information juridique — pas un avis juridique.</p>
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_0.8fr_1.2fr] lg:gap-16">
+            <div>
+              <NavLink
+                to="/"
+                className="inline-flex items-center gap-3 rounded-xl"
+              >
+                <LogoMark className="size-10 bg-slate-50" />
+                <span className="rounded bg-white px-1.5 py-1">
+                  <img
+                    src="/logo-text.png"
+                    alt="JuriPredict AI"
+                    className="h-5 w-auto"
+                  />
+                </span>
+              </NavLink>
+              <p className="mt-4 max-w-sm text-sm leading-6 text-slate-500">
+                Un point de départ pour explorer le droit haïtien, comprendre
+                les textes et retrouver des sources à consulter.
+              </p>
+              <p className="mt-5 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-800">
+                <ShieldCheck size={15} aria-hidden="true" />
+                Informer, avec prudence
+              </p>
+            </div>
+
+            <nav aria-label="Liens utiles">
+              <h2 className="text-sm font-semibold text-navy">Explorer</h2>
+              <ul className="mt-4 space-y-3">
+                {[
+                  { to: '/assistant', label: 'Assistant juridique', icon: Scale },
+                  { to: '/base-juridique', label: 'Base juridique', icon: BookOpen },
+                  { to: '/ressources', label: 'Toutes les ressources', icon: BookOpenCheck },
+                ].map(({ to, label, icon: Icon }) => (
+                  <li key={to}>
+                    <NavLink
+                      to={to}
+                      className="inline-flex items-center gap-2 text-sm text-slate-500 transition hover:text-brand"
+                    >
+                      <Icon size={16} aria-hidden="true" />
+                      {label}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <nav aria-label="Sources juridiques externes">
+              <h2 className="text-sm font-semibold text-navy">
+                Droit national
+              </h2>
+              <ul className="mt-4 space-y-3">
+                {legalResources
+                  .filter(({ scope }) => scope === 'national')
+                  .slice(0, 3)
+                  .map((resource) => (
+                    <li key={resource.name}>
+                      <a
+                        href={resource.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 text-sm text-slate-500 transition hover:text-brand"
+                      >
+                        {resource.name}
+                        <ArrowUpRight size={14} aria-hidden="true" />
+                      </a>
+                    </li>
+                  ))}
+                <li className="pt-1">
+                  <NavLink
+                    to="/ressources"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:text-blue-700"
+                  >
+                    Toutes les sources nationales
+                    <ExternalLink size={14} aria-hidden="true" />
+                  </NavLink>
+                </li>
+              </ul>
+            </nav>
+
+            <nav aria-label="Sources juridiques internationales">
+              <h2 className="text-sm font-semibold text-navy">
+                Droit international
+              </h2>
+              <ul className="mt-4 space-y-3">
+                {legalResources
+                  .filter(({ scope }) => scope === 'international')
+                  .slice(0, 3)
+                  .map((resource) => (
+                    <li key={resource.name}>
+                      <a
+                        href={resource.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 text-sm text-slate-500 transition hover:text-brand"
+                      >
+                        {resource.name}
+                        <ArrowUpRight size={14} aria-hidden="true" />
+                      </a>
+                    </li>
+                  ))}
+                <li className="pt-1">
+                  <NavLink
+                    to="/ressources"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:text-blue-700"
+                  >
+                    Toutes les sources internationales
+                    <ExternalLink size={14} aria-hidden="true" />
+                  </NavLink>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <div className="mt-10 flex flex-col gap-3 border-t border-slate-200 pt-5 text-xs leading-5 text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+            <p>
+              © {currentYear} JuriPredict AI · Droit haïtien,
+              sources consultables.
+            </p>
+            <p>
+              Outil d’information — ne remplace pas l’avis d’un professionnel
+              du droit.
+            </p>
+          </div>
         </div>
       </footer>
     </div>
