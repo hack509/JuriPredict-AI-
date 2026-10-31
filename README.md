@@ -42,6 +42,14 @@ Analyse structurée avec articles et sources
 
 Le pipeline RAG envisagé comprend l’ingestion et le nettoyage des textes, leur découpage en unités cohérentes (notamment par article), la création d’embeddings, la recherche des passages pertinents, puis la génération d’une analyse structurée à partir de ces sources.
 
+### Assistant conversationnel
+
+La page `/assistant` fournit un espace de conversation avec historique local, recherche, épinglage, archivage, renommage, suppression, export et préférences. Sur ordinateur, la barre latérale se replie en icônes et se déploie au survol ou au focus clavier ; elle peut être gardée ouverte via les paramètres. Sur mobile, elle reste un tiroir de navigation. L’historique et les réglages sont conservés dans le navigateur ; ils ne sont pas synchronisés avec un compte. Les profils et modes proposés sont des options d’interface, pas des modèles IA annoncés comme disponibles.
+
+L’envoi de messages attend un endpoint `POST /api/v1/chat` à l’adresse `VITE_API_URL` (par défaut `http://localhost:8000`). Sans fichier, il reçoit du JSON contenant `conversation_id`, `message`, `mode` et `profile`. Avec fichier, il reçoit ces champs en `multipart/form-data` ainsi que les fichiers dans des champs `files`. La réponse doit fournir un champ `content` (ou `message.content`) et peut inclure `id` / `message_id` et un tableau `citations`. Les citations ne sont affichées que si le service les retourne ; les pièces jointes ne sont réellement traitées que par un endpoint backend configuré.
+
+Voir le [guide d’intégration backend et RAG](./README-INTEGRATION.md) pour l’état des fonctionnalités, les contrats API et les étapes de raccordement du corpus et du moteur RAG.
+
 ## Technologies
 
 **Présentes dans ce frontend :**

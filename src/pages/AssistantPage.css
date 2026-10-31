@@ -1,0 +1,1606 @@
+.jp-app {
+  --jp-bg: #fff;
+  --jp-surface: #fff;
+  --jp-sidebar: #f7f8fa;
+  --jp-soft: #f4f6f8;
+  --jp-border: #e7e9ed;
+  --jp-text: #1d2735;
+  --jp-muted: #78818d;
+  --jp-accent: #1b6a61;
+  --jp-accent-soft: #eaf4f1;
+  --jp-danger: #b54747;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  min-height: 580px;
+  overflow: hidden;
+  color: var(--jp-text);
+  background: var(--jp-bg);
+  font-size: 14px;
+}
+
+.jp-dark {
+  --jp-bg: #171a1d;
+  --jp-surface: #1d2125;
+  --jp-sidebar: #202428;
+  --jp-soft: #282d32;
+  --jp-border: #343a40;
+  --jp-text: #eef0f2;
+  --jp-muted: #a0a8b0;
+  --jp-accent: #86c9bc;
+  --jp-accent-soft: #253a36;
+  --jp-danger: #ff9a91;
+}
+
+.jp-app button,
+.jp-app a,
+.jp-app select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.jp-app button {
+  color: inherit;
+}
+
+.jp-sidebar {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  width: 272px;
+  flex: 0 0 272px;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 13px 12px;
+  border-right: 1px solid var(--jp-border);
+  background: var(--jp-sidebar);
+  transition: width .18s ease, flex-basis .18s ease, padding .18s ease;
+}
+
+.jp-brand,
+.jp-brand-link,
+.jp-sidebar-tools a,
+.jp-sidebar-tools button,
+.jp-sidebar-bottom > button,
+.jp-profile,
+.jp-profile > div,
+.jp-header,
+.jp-header-left,
+.jp-header-actions,
+.jp-model-button,
+.jp-new-chat,
+.jp-conversation,
+.jp-conversation-select,
+.jp-context-menu button,
+.jp-search,
+.jp-mode-switch,
+.jp-suggestion-icon,
+.jp-message,
+.jp-message-author,
+.jp-message-actions,
+.jp-source,
+.jp-attachment,
+.jp-composer-bottom,
+.jp-composer-tools,
+.jp-attach-button,
+.jp-tool-pill,
+.jp-send-button,
+.jp-alert,
+.jp-editing,
+.jp-settings-modal > header,
+.jp-share-modal > header,
+.jp-share-actions {
+  display: flex;
+  align-items: center;
+}
+
+.jp-brand {
+  justify-content: space-between;
+  min-height: 38px;
+  padding: 0 4px 5px;
+}
+
+.jp-sidebar-pin {
+  width: 30px;
+  height: 30px;
+}
+
+.jp-sidebar-pin[aria-pressed="true"] {
+  background: var(--jp-accent-soft);
+  color: var(--jp-accent);
+}
+
+.jp-brand-link {
+  gap: 10px;
+  color: var(--jp-text);
+  font-size: 15px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.jp-brand-link > span:last-child {
+  letter-spacing: -.025em;
+}
+
+.jp-app .jp-brand-link > span:first-child {
+  background: var(--jp-accent-soft);
+  color: var(--jp-accent);
+}
+
+.jp-icon-button {
+  display: inline-grid;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--jp-muted);
+  cursor: pointer;
+  transition: background .16s ease, color .16s ease;
+}
+
+.jp-icon-button:hover,
+.jp-conversation-menu-button:hover {
+  background: var(--jp-soft);
+  color: var(--jp-text);
+}
+
+.jp-sidebar-close,
+.jp-menu-toggle {
+  display: none;
+}
+
+.jp-new-chat {
+  height: 42px;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 0 12px;
+  border: 1px solid var(--jp-border);
+  border-radius: 10px;
+  background: var(--jp-surface);
+  color: var(--jp-text);
+  font-size: 13px;
+  font-weight: 550;
+  cursor: pointer;
+  box-shadow: 0 1px 2px #17203308;
+}
+
+.jp-new-chat-icon {
+  display: grid;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  place-items: center;
+  color: var(--jp-accent);
+}
+
+.jp-new-chat:hover {
+  border-color: #b9c9c5;
+  background: var(--jp-accent-soft);
+}
+
+.jp-shortcut {
+  margin-left: auto;
+  color: var(--jp-muted);
+  font-size: 10px;
+}
+
+.jp-sidebar-tools {
+  display: grid;
+  gap: 3px;
+  padding-top: 2px;
+}
+
+.jp-sidebar-tools a,
+.jp-sidebar-tools button,
+.jp-sidebar-bottom > button {
+  width: 100%;
+  min-height: 38px;
+  gap: 10px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--jp-muted);
+  font-size: 13px;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.jp-sidebar-tools a:hover,
+.jp-sidebar-tools button:hover,
+.jp-sidebar-tools .jp-tool-active,
+.jp-sidebar-bottom > button:hover {
+  background: var(--jp-soft);
+  color: var(--jp-text);
+}
+
+.jp-search {
+  gap: 7px;
+  min-height: 36px;
+  padding: 0 9px;
+  border: 1px solid var(--jp-border);
+  border-radius: 8px;
+  background: var(--jp-surface);
+  color: var(--jp-muted);
+}
+
+.jp-search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--jp-text);
+  font-size: 12px;
+}
+
+.jp-search button {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--jp-muted);
+  cursor: pointer;
+}
+
+.jp-history-heading {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 9px 0;
+  color: var(--jp-muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.jp-conversation-list {
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.jp-conversation {
+  position: relative;
+  min-width: 0;
+  min-height: 36px;
+  border-radius: 8px;
+}
+
+.jp-conversation-active,
+.jp-conversation:hover {
+  background: var(--jp-soft);
+}
+
+.jp-conversation-select {
+  min-width: 0;
+  width: 100%;
+  height: 36px;
+  gap: 8px;
+  padding: 0 32px 0 9px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--jp-muted);
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.jp-conversation-active .jp-conversation-select,
+.jp-conversation:hover .jp-conversation-select {
+  color: var(--jp-text);
+}
+
+.jp-conversation-select svg {
+  flex: 0 0 auto;
+}
+
+.jp-conversation-select span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jp-conversation-menu-button {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 0;
+  border-radius: 6px;
+  background: var(--jp-soft);
+  color: var(--jp-muted);
+  opacity: 0;
+  cursor: pointer;
+}
+
+.jp-conversation:hover .jp-conversation-menu-button,
+.jp-conversation-menu-button:focus-visible,
+.jp-conversation-menu-button[aria-expanded="true"] {
+  opacity: 1;
+}
+
+.jp-context-menu {
+  position: absolute;
+  z-index: 30;
+  top: 33px;
+  right: 2px;
+  width: 165px;
+  padding: 5px;
+  border: 1px solid var(--jp-border);
+  border-radius: 10px;
+  background: var(--jp-surface);
+  box-shadow: 0 12px 30px #18202b1a;
+}
+
+.jp-context-menu button {
+  width: 100%;
+  gap: 8px;
+  padding: 8px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--jp-text);
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.jp-context-menu button:hover {
+  background: var(--jp-soft);
+}
+
+.jp-context-menu .jp-danger {
+  color: var(--jp-danger);
+}
+
+.jp-empty-history {
+  padding: 0 9px;
+  color: var(--jp-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.jp-sidebar-bottom {
+  display: grid;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 9px;
+  border-top: 1px solid var(--jp-border);
+}
+
+.jp-profile {
+  gap: 9px;
+  padding: 8px 4px 2px;
+}
+
+.jp-avatar {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--jp-accent-soft);
+  color: var(--jp-accent);
+  font-weight: 700;
+}
+
+.jp-profile > div {
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.jp-profile strong {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.jp-profile small {
+  color: var(--jp-muted);
+  font-size: 10px;
+}
+
+.jp-profile > a {
+  color: var(--jp-muted);
+  text-decoration: none;
+}
+
+@media (min-width: 761px) {
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) {
+    width: 66px;
+    flex-basis: 66px;
+    gap: 12px;
+    overflow: hidden;
+    padding-right: 9px;
+    padding-left: 9px;
+  }
+
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-brand {
+    justify-content: center;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-brand-link > span:last-child,
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-sidebar-pin,
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-shortcut,
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-new-chat > span:not(.jp-new-chat-icon),
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-sidebar-tools span,
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-sidebar-bottom > button span,
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-history-heading,
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-conversation-list,
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-search,
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-profile > div,
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-profile > a {
+    display: none;
+  }
+
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-new-chat {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    justify-content: center;
+    gap: 0;
+    align-self: center;
+    padding: 0;
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-new-chat-icon {
+    display: grid;
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+    place-items: center;
+    border-radius: 7px;
+    background: var(--jp-accent-soft);
+    color: var(--jp-accent);
+  }
+
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-new-chat-icon svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-new-chat:hover {
+    border-color: var(--jp-border);
+    background: var(--jp-surface);
+  }
+
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-sidebar-tools {
+    gap: 5px;
+    padding-top: 0;
+  }
+
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-sidebar-tools a,
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-sidebar-tools button,
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-sidebar-bottom > button {
+    width: 40px;
+    min-height: 40px;
+    justify-content: center;
+    gap: 0;
+    align-self: center;
+    padding: 0;
+  }
+
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-sidebar-bottom {
+    gap: 7px;
+  }
+
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-profile {
+    justify-content: center;
+    padding: 6px 0 2px;
+  }
+
+  .jp-sidebar-hover-mode:not(:hover):not(:focus-within) .jp-conversation-list {
+    visibility: hidden;
+  }
+}
+
+.jp-main {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  background: var(--jp-bg);
+}
+
+.jp-header {
+  z-index: 10;
+  height: 58px;
+  flex: 0 0 58px;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 0 25px;
+  border-bottom: 1px solid var(--jp-border);
+  background: var(--jp-surface);
+}
+
+.jp-header-left,
+.jp-header-actions {
+  gap: 8px;
+}
+
+.jp-model-wrap,
+.jp-mode-wrap,
+.jp-export-wrap {
+  position: relative;
+}
+
+.jp-model-button {
+  gap: 6px;
+  padding: 7px 9px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--jp-text);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.jp-model-button:hover {
+  background: var(--jp-soft);
+}
+
+.jp-beta {
+  padding: 4px 6px;
+  border-radius: 5px;
+  background: var(--jp-accent-soft);
+  color: var(--jp-accent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .07em;
+}
+
+.jp-header-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border: 1px solid var(--jp-border);
+  border-radius: 8px;
+  background: var(--jp-surface);
+  color: var(--jp-muted);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.jp-header-action:hover {
+  color: var(--jp-text);
+  background: var(--jp-soft);
+}
+
+.jp-sign-in {
+  padding: 8px 13px;
+  border-radius: 8px;
+  background: var(--jp-accent);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.jp-dark .jp-sign-in {
+  color: #17211f;
+}
+
+.jp-dropdown {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 290px;
+  padding: 7px;
+  border: 1px solid var(--jp-border);
+  border-radius: 12px;
+  background: var(--jp-surface);
+  box-shadow: 0 15px 40px #18202b1c;
+}
+
+.jp-dropdown > p {
+  padding: 5px 8px;
+  color: var(--jp-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.jp-dropdown > button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 8px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--jp-text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.jp-dropdown > button:hover,
+.jp-dropdown > .jp-dropdown-selected {
+  background: var(--jp-soft);
+}
+
+.jp-dropdown > button > span {
+  display: grid;
+  min-width: 0;
+  flex: 1;
+  gap: 2px;
+}
+
+.jp-dropdown strong {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.jp-dropdown small {
+  color: var(--jp-muted);
+  font-size: 10px;
+}
+
+.jp-dropdown-note {
+  display: block;
+  margin: 5px 3px 1px;
+  padding: 8px;
+  border-top: 1px solid var(--jp-border);
+  color: var(--jp-muted);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.jp-workspace {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+}
+
+.jp-conversation-view {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.jp-welcome {
+  width: min(720px, 100%);
+  margin: auto;
+  padding: 45px 28px 34px;
+  text-align: center;
+}
+
+.jp-welcome-icon {
+  display: grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  margin: 0 auto 20px;
+  border-radius: 18px;
+  background: var(--jp-accent-soft);
+}
+
+.jp-welcome-icon > span {
+  background: transparent;
+  color: var(--jp-accent);
+}
+
+.jp-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--jp-accent);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.jp-eyebrow > span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--jp-accent);
+}
+
+.jp-welcome h1 {
+  margin: 13px 0 0;
+  color: var(--jp-text);
+  font-size: clamp(25px, 4vw, 35px);
+  font-weight: 580;
+  letter-spacing: -.045em;
+}
+
+.jp-welcome-copy {
+  max-width: 530px;
+  margin: 12px auto 0;
+  color: var(--jp-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.jp-mode-switch {
+  width: fit-content;
+  gap: 3px;
+  margin: 24px auto 18px;
+  padding: 4px;
+  border: 1px solid var(--jp-border);
+  border-radius: 10px;
+  background: var(--jp-soft);
+}
+
+.jp-mode-switch button {
+  padding: 7px 11px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--jp-muted);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.jp-mode-switch .jp-mode-selected {
+  background: var(--jp-surface);
+  color: var(--jp-text);
+  box-shadow: 0 1px 3px #16202b14;
+}
+
+.jp-suggestions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  text-align: left;
+}
+
+.jp-suggestions > button {
+  display: grid;
+  min-height: 74px;
+  grid-template-columns: 31px minmax(0, 1fr) 16px;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--jp-border);
+  border-radius: 11px;
+  background: var(--jp-surface);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .16s ease, background .16s ease, transform .16s ease;
+}
+
+.jp-suggestions > button:hover {
+  transform: translateY(-1px);
+  border-color: #a9c8c0;
+  background: var(--jp-accent-soft);
+}
+
+.jp-suggestion-icon {
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--jp-soft);
+  color: var(--jp-accent);
+}
+
+.jp-suggestions > button > span:nth-child(2) {
+  display: grid;
+  gap: 4px;
+}
+
+.jp-suggestions strong {
+  color: var(--jp-text);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.jp-suggestions small {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--jp-muted);
+  font-size: 10px;
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.jp-suggestions > button > svg {
+  color: var(--jp-muted);
+  transform: rotate(45deg);
+}
+
+.jp-legal-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 21px;
+  color: var(--jp-muted);
+  font-size: 10px;
+}
+
+.jp-legal-note svg {
+  color: var(--jp-accent);
+}
+
+.jp-workspace-chat .jp-conversation-view {
+  scroll-behavior: smooth;
+}
+
+.jp-messages {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  padding: 20px 24px 24px;
+}
+
+.jp-chat-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 20px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid var(--jp-border);
+  color: var(--jp-muted);
+  font-size: 11px;
+}
+
+.jp-chat-title span:first-child {
+  overflow: hidden;
+  color: var(--jp-text);
+  font-size: 13px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jp-chat-title span:last-child {
+  flex: 0 0 auto;
+}
+
+.jp-message {
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0 0 26px;
+}
+
+.jp-message-user {
+  justify-content: flex-end;
+}
+
+.jp-message-avatar {
+  flex: 0 0 32px;
+}
+
+.jp-message-avatar > span {
+  background: var(--jp-accent-soft);
+  color: var(--jp-accent);
+}
+
+.jp-message-body {
+  min-width: 0;
+  max-width: 88%;
+}
+
+.jp-message-user .jp-message-body {
+  max-width: min(78%, 560px);
+  padding: 12px 15px;
+  border: 1px solid var(--jp-border);
+  border-radius: 15px 15px 4px 15px;
+  background: var(--jp-soft);
+}
+
+.jp-message-author {
+  gap: 9px;
+  margin-bottom: 8px;
+  color: var(--jp-text);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.jp-message-author time {
+  color: var(--jp-muted);
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.jp-message-content {
+  margin: 0;
+  color: var(--jp-text);
+  font-size: 13px;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.jp-message-files {
+  display: grid;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.jp-message-files > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--jp-muted);
+  font-size: 11px;
+}
+
+.jp-message-files small {
+  color: var(--jp-muted);
+  font-size: 10px;
+}
+
+.jp-message-actions {
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-top: 9px;
+  opacity: .7;
+}
+
+.jp-message:hover .jp-message-actions,
+.jp-message-actions:focus-within {
+  opacity: 1;
+}
+
+.jp-message-actions button {
+  display: inline-flex;
+  min-height: 27px;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 6px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--jp-muted);
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.jp-message-actions button:hover,
+.jp-message-actions button[aria-pressed="true"] {
+  background: var(--jp-soft);
+  color: var(--jp-accent);
+}
+
+.jp-sources {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 13px;
+  border-top: 1px solid var(--jp-border);
+}
+
+.jp-sources h3 {
+  margin: 0;
+  color: var(--jp-muted);
+  font-size: 10px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.jp-source {
+  gap: 9px;
+  padding: 10px;
+  border: 1px solid var(--jp-border);
+  border-radius: 9px;
+  background: var(--jp-surface);
+  color: var(--jp-accent);
+}
+
+.jp-source > div {
+  min-width: 0;
+  flex: 1;
+}
+
+.jp-source strong {
+  color: var(--jp-text);
+  font-size: 11px;
+}
+
+.jp-source p {
+  margin: 4px 0 0;
+  color: var(--jp-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.jp-source a {
+  color: var(--jp-accent);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.jp-verified {
+  display: block;
+  margin-top: 5px;
+  color: var(--jp-accent);
+  font-size: 9px;
+}
+
+.jp-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 24px 44px;
+  color: var(--jp-muted);
+  font-size: 12px;
+}
+
+.jp-spinner {
+  animation: jp-spin .9s linear infinite;
+}
+
+@keyframes jp-spin {
+  to { transform: rotate(360deg); }
+}
+
+.jp-composer-zone {
+  width: min(820px, 100%);
+  flex: 0 0 auto;
+  align-self: center;
+  padding: 10px 24px 14px;
+}
+
+.jp-composer {
+  padding: 11px 12px 9px;
+  border: 1px solid var(--jp-border);
+  border-radius: 17px;
+  background: var(--jp-surface);
+  box-shadow: 0 5px 20px #202a3510;
+  transition: border-color .15s, box-shadow .15s;
+}
+
+.jp-composer:focus-within {
+  border-color: #9abbb3;
+  box-shadow: 0 0 0 3px #1b6a610d, 0 5px 20px #202a3510;
+}
+
+.jp-composer > textarea {
+  display: block;
+  width: 100%;
+  min-height: 38px;
+  max-height: 180px;
+  resize: none;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--jp-text);
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.jp-composer > textarea::placeholder {
+  color: var(--jp-muted);
+}
+
+.jp-composer-bottom {
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.jp-composer-tools {
+  min-width: 0;
+  gap: 7px;
+}
+
+.jp-attach-button,
+.jp-tool-pill {
+  min-height: 31px;
+  gap: 6px;
+  padding: 0 8px;
+  border: 1px solid var(--jp-border);
+  border-radius: 8px;
+  background: var(--jp-surface);
+  color: var(--jp-muted);
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.jp-attach-button:hover,
+.jp-tool-pill:hover {
+  background: var(--jp-soft);
+  color: var(--jp-text);
+}
+
+.jp-send-button {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  justify-content: center;
+  border: 0;
+  border-radius: 10px;
+  background: var(--jp-accent);
+  color: white !important;
+  cursor: pointer;
+}
+
+.jp-send-button:disabled {
+  background: var(--jp-soft);
+  color: var(--jp-muted) !important;
+  cursor: not-allowed;
+}
+
+.jp-mode-dropdown {
+  top: auto;
+  bottom: calc(100% + 7px);
+  width: 190px;
+}
+
+.jp-mode-dropdown > button {
+  justify-content: space-between;
+  font-size: 11px;
+}
+
+.jp-composer-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 3px 0;
+  color: var(--jp-muted);
+  font-size: 9px;
+}
+
+.jp-disclaimer {
+  margin: 8px 0 0;
+  color: var(--jp-muted);
+  font-size: 9px;
+  text-align: center;
+}
+
+.jp-attachment-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding-bottom: 8px;
+}
+
+.jp-attachment {
+  max-width: 240px;
+  gap: 8px;
+  padding: 7px 8px;
+  border: 1px solid var(--jp-border);
+  border-radius: 9px;
+  background: var(--jp-soft);
+  color: var(--jp-accent);
+}
+
+.jp-attachment > span {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.jp-attachment strong {
+  overflow: hidden;
+  color: var(--jp-text);
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.jp-attachment small {
+  color: var(--jp-muted);
+  font-size: 9px;
+}
+
+.jp-attachment button {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--jp-muted);
+  cursor: pointer;
+}
+
+.jp-alert,
+.jp-notice,
+.jp-editing {
+  gap: 9px;
+  margin-bottom: 8px;
+  padding: 9px 11px;
+  border: 1px solid #e8c7a2;
+  border-radius: 9px;
+  background: #fff8ee;
+  color: #79480d;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.jp-dark .jp-alert,
+.jp-dark .jp-notice,
+.jp-dark .jp-editing {
+  border-color: #715633;
+  background: #332a1d;
+  color: #f2c88c;
+}
+
+.jp-alert > span {
+  flex: 1;
+}
+
+.jp-alert button,
+.jp-notice button,
+.jp-editing button {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.jp-editing {
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.jp-editing button {
+  text-decoration: underline;
+}
+
+.jp-modal-backdrop {
+  position: fixed;
+  z-index: 60;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: #10182080;
+  backdrop-filter: blur(2px);
+}
+
+.jp-settings-modal,
+.jp-share-modal {
+  width: min(540px, 100%);
+  max-height: min(790px, calc(100vh - 36px));
+  overflow: auto;
+  border: 1px solid var(--jp-border);
+  border-radius: 16px;
+  background: var(--jp-surface);
+  color: var(--jp-text);
+  box-shadow: 0 24px 80px #11182733;
+}
+
+.jp-settings-modal > header,
+.jp-share-modal > header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  justify-content: space-between;
+  padding: 17px 20px;
+  border-bottom: 1px solid var(--jp-border);
+  background: var(--jp-surface);
+}
+
+.jp-modal-kicker {
+  color: var(--jp-accent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+
+.jp-settings-modal h2,
+.jp-share-modal h2 {
+  margin: 4px 0 0;
+  font-size: 19px;
+  letter-spacing: -.03em;
+}
+
+.jp-settings-content {
+  padding: 5px 20px 20px;
+}
+
+.jp-settings-content fieldset {
+  display: grid;
+  gap: 12px;
+  margin: 14px 0;
+  padding: 0 0 15px;
+  border: 0;
+  border-bottom: 1px solid var(--jp-border);
+}
+
+.jp-settings-content legend {
+  padding: 0 0 10px;
+  color: var(--jp-text);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.jp-settings-content label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--jp-muted);
+  font-size: 11px;
+}
+
+.jp-settings-content select {
+  width: 190px;
+  max-width: 54%;
+  height: 34px;
+  padding: 0 8px;
+  border: 1px solid var(--jp-border);
+  border-radius: 7px;
+  background: var(--jp-surface);
+  color: var(--jp-text);
+  font-size: 11px;
+}
+
+.jp-settings-content .jp-toggle-row input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--jp-accent);
+}
+
+.jp-settings-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.jp-settings-actions button,
+.jp-secondary-button,
+.jp-primary-button {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 10px;
+  border: 1px solid var(--jp-border);
+  border-radius: 8px;
+  background: var(--jp-surface);
+  color: var(--jp-muted);
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.jp-settings-actions button:hover,
+.jp-secondary-button:hover {
+  background: var(--jp-soft);
+  color: var(--jp-text);
+}
+
+.jp-about-note {
+  color: var(--jp-muted);
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.jp-about-note a {
+  color: var(--jp-accent);
+}
+
+.jp-share-modal {
+  width: min(480px, 100%);
+}
+
+.jp-share-message {
+  display: flex;
+  gap: 12px;
+  padding: 20px;
+  color: var(--jp-accent);
+}
+
+.jp-share-message p {
+  margin: 0;
+  color: var(--jp-muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.jp-share-actions {
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+  padding: 0 20px 18px;
+}
+
+.jp-primary-button {
+  border-color: var(--jp-accent);
+  background: var(--jp-accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.jp-dark .jp-primary-button {
+  color: #17211f;
+}
+
+.jp-backdrop {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .jp-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: min(290px, calc(100vw - 42px));
+    flex: 0 0 min(290px, calc(100vw - 42px));
+    transform: translateX(-101%);
+    transition: transform .2s ease;
+    box-shadow: 15px 0 35px #0e162014;
+  }
+
+  .jp-sidebar-open {
+    transform: translateX(0);
+  }
+
+  .jp-backdrop {
+    position: fixed;
+    z-index: 19;
+    inset: 0;
+    display: block;
+    border: 0;
+    background: #121b2470;
+  }
+
+  .jp-sidebar-close,
+  .jp-menu-toggle {
+    display: inline-grid;
+  }
+
+  .jp-header {
+    height: 54px;
+    flex-basis: 54px;
+    padding: 0 12px;
+  }
+
+  .jp-header-left,
+  .jp-header-actions {
+    gap: 3px;
+  }
+
+  .jp-model-button {
+    max-width: 190px;
+    overflow: hidden;
+    font-size: 11px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .jp-beta,
+  .jp-share-button,
+  .jp-print-button {
+    display: none;
+  }
+
+  .jp-sign-in {
+    padding: 7px 9px;
+    font-size: 10px;
+  }
+
+  .jp-welcome {
+    padding: 32px 16px 25px;
+  }
+
+  .jp-welcome h1 {
+    font-size: 27px;
+  }
+
+  .jp-suggestions {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .jp-suggestions > button {
+    min-height: 61px;
+    padding: 9px;
+  }
+
+  .jp-legal-note {
+    align-items: flex-start;
+    font-size: 9px;
+    line-height: 1.5;
+  }
+
+  .jp-composer-zone {
+    padding: 8px 12px 11px;
+  }
+
+  .jp-composer-meta {
+    font-size: 8px;
+  }
+
+  .jp-messages {
+    padding: 14px 13px 20px;
+  }
+
+  .jp-message-body {
+    max-width: calc(100% - 38px);
+  }
+
+  .jp-message-user .jp-message-body {
+    max-width: 88%;
+  }
+}
+
+@media (max-width: 420px) {
+  .jp-model-button {
+    max-width: 142px;
+    padding: 7px 5px;
+  }
+
+  .jp-header {
+    gap: 4px;
+  }
+
+  .jp-header .jp-icon-button {
+    width: 32px;
+  }
+
+  .jp-sign-in {
+    display: none;
+  }
+
+  .jp-mode-switch button {
+    padding: 7px 8px;
+    font-size: 10px;
+  }
+
+  .jp-composer-meta span:last-child {
+    display: none;
+  }
+
+  .jp-message-actions {
+    opacity: 1;
+  }
+}
+
+@media print {
+  .jp-sidebar,
+  .jp-header,
+  .jp-composer-zone,
+  .jp-message-actions {
+    display: none !important;
+  }
+
+  .jp-app,
+  .jp-main,
+  .jp-workspace {
+    display: block;
+    height: auto;
+    overflow: visible;
+    color: #111;
+    background: white;
+  }
+
+  .jp-conversation-view {
+    overflow: visible;
+  }
+}
